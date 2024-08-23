@@ -49,9 +49,8 @@ with app.app_context():
 def home(movie_id=None):
     result = db.session.execute(db.select(Cafe))
     cafes = result.scalars().all()
-    print(cafes[0])
-    
-    return render_template('index.html')
+    print(cafes[0].can_take_calls)
+    return render_template('index.html', cafes=cafes)
 
 
 if __name__ == '__main__':
